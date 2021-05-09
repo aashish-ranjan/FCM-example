@@ -2,9 +2,12 @@ package com.joemarini.fcmexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "FCMExample: ";
@@ -20,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
         // TODO: get the FCM instance default token
 
         tvMsg = (TextView)findViewById(R.id.textView2);
+        m_FCMtoken = FirebaseInstanceId.getInstance().getToken();
 
         // TODO: Log the token to debug output so we can copy it
         ((Button)findViewById(R.id.btnLogToken)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "onClick: FCM token is " + m_FCMtoken);
             }
         });
 
