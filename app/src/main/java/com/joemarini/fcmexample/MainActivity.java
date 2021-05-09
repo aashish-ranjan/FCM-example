@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         // TODO: When the activity starts up, look for intent information
         // that may have been passed in from the Notification tap
         if (getIntent().getExtras() != null) {
+            StringBuilder launchMsg = new StringBuilder();
+            for(String key: getIntent().getExtras().keySet()) {
+                Object val = getIntent().getExtras().get(key);
+                Log.d(TAG, "onCreate: key= " + key + " ,value = " + val + "\n");
+                launchMsg.append("key= " + key + " ,value = " + val + "\n");
+            }
+            tvMsg.setText(launchMsg);
         }
         else {
             tvMsg.setText("No launch information");
