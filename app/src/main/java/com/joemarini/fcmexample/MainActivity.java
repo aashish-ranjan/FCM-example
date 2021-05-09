@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "FCMExample: ";
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.btnSubscribe)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseMessaging.getInstance().subscribeToTopic("random-test-topic");
             }
         });
 
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.btnUnsubscribe)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("random-test-topic");
             }
         });
 
