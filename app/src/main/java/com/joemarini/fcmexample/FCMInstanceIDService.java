@@ -1,7 +1,17 @@
 package com.joemarini.fcmexample;
 
 
-public class FCMInstanceIDService {
+import android.util.Log;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+
+public class FCMInstanceIDService extends FirebaseInstanceIdService {
     private static final String TAG = "FCMInstanceIDService";
 
+    @Override
+    public void onTokenRefresh() {
+        String newToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d(TAG, "onTokenRefresh: Updated token is " + newToken);
+    }
 }
